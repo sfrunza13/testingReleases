@@ -1,0 +1,19 @@
+{
+  "name": "testingreleases",
+  "version": "0.0.1",
+  "description": "Testing stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfrunza13/testingReleases.git"
+  },
+  "author": "Stefan Frunza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sfrunza13/testingReleases/issues"
+  },
+  "homepage": "https://github.com/sfrunza13/testingReleases#readme"
+}
