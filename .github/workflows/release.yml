@@ -10,7 +10,6 @@ concurrency:
   cancel-in-progress: true
 
 changelog:
-  exclude:
   categories:
     - title: Breaking Changes 🛠
       labels:
