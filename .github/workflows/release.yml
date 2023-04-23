@@ -23,8 +23,8 @@ jobs:
         id: vars
         run: |
           git fetch -a
-          echo "current_major=$(git tag -l --sort "-refname v*" | cut -d$'\n' -f1 | cut -d. -f1)" >> "$GITHUB_ENV"
-          echo "previous_major=$(git tag -l --sort "-refname v*" | cut -d$'\n' -f2 | cut -d. -f1)" >> "$GITHUB_ENV"
+          echo "current_major=$(git tag -l --sort -refname v* | cut -d$'\n' -f1 | cut -d. -f1)" >> "$GITHUB_ENV"
+          echo "previous_major=$(git tag -l --sort -refname v* | cut -d$'\n' -f2 | cut -d. -f1)" >> "$GITHUB_ENV"
       - name: "Build Changelog"
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3
