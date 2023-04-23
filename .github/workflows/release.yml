@@ -31,7 +31,7 @@ jobs:
               ]
               }
           commitMode: false
-          fromTag: latest
+          fromTag: v4.1.1
           toTag: HEAD
           token: ${{ github.token }}
       - name: Create Release
