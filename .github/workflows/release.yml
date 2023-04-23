@@ -43,13 +43,10 @@ jobs:
           include-compare: true
           semver: false
       - name: Create Release
-        uses: mikepenz/action-gh-release@v0.2.0-a03 #softprops/action-gh-release
+        uses: softprops/action-gh-release@v1
         with:
+          name: Change Log
           tag_name: latest
           token: ${{ github.token }}
           body: ${{steps.build_changelog.outputs.changelog}}
           append_body: false
-      - name: "🏷️ Push tag"
-        uses: Actions-R-Us/actions-tagger@latest
-        with:
-          publish_latest_tag: true
