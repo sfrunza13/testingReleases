@@ -23,12 +23,6 @@ jobs:
           configurationJson: |
               {
                 "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Changes</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
-                "categories": [
-                {
-                    "title": "## 💬 Uncategorized",
-                    "labels": []
-                },
-              ]
               }
           commitMode: true
           toTag: HEAD
