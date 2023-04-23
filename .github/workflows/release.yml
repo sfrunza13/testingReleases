@@ -42,8 +42,6 @@ jobs:
           mention-authors: true
           mention-new-contributors: true
           include-compare: true
-          include-pr-lints: true
-          include-commit-lints: true
           semver: false
       - name: Create Release
         uses: mikepenz/action-gh-release@v0.2.0-a03 #softprops/action-gh-release
