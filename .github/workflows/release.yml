@@ -16,16 +16,20 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Update CHANGELOG
-        id: changelog
-        uses: requarks/changelog-action@v1
+      - name: Changelog
+        uses: scottbrenner/generate-changelog-action@master
+        id: Changelog
         with:
-          token: ${{ github.token }}
-          fromTag: latest
-          toTag: HEAD
+          from-tag: latest
+          to-tag: latest
+
+      # - name: Update CHANGELOG
+      #   id: changelog
+      #   uses: requarks/changelog-action@v1
+      #   with:
+      #     token: ${{ github.token }}
+      #     fromTag: latest
+      #     toTag: HEAD
 
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
