@@ -16,45 +16,46 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Changelog
-        uses: ardalanamini/auto-changelog@v3
-        id: changelog
-        with:
-          github-token: ${{ github.token }}
-          commit-types: |
-            breaking: Breaking Changes
-            feat: New Features
-            fix: Bug Fixes
-            revert: Reverts
-            perf: Performance Improvements
-            refactor: Refactors
-            deps: Dependencies
-            docs: Documentation Changes
-            style: Code Style Changes
-            build: Build System
-            ci: Continuous Integration
-            test: Tests
-            chore: Chores
-            other: Other Changes
-          mention-authors: true
-          mention-new-contributors: true
-          default-commit-type: Other Changes
-          release-name: Latest Changes
-          semver: false
-
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
         with:
           allowUpdates: true
           draft: false
           makeLatest: true
-          name: ${{ github.ref_name }}
-          body: ${{ steps.changelog.outputs.changes }}
+          name: Latest Release
+          generateReleaseNotes: true
           token: ${{ github.token }}
 
-      - name: Commit CHANGELOG.md
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: main
-          commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
-          file_pattern: CHANGELOG.md
+    
+      # - name: Changelog
+      #   uses: ardalanamini/auto-changelog@v3
+      #   id: changelog
+      #   with:
+      #     github-token: ${{ github.token }}
+      #     commit-types: |
+      #       breaking: Breaking Changes
+      #       feat: New Features
+      #       fix: Bug Fixes
+      #       revert: Reverts
+      #       perf: Performance Improvements
+      #       refactor: Refactors
+      #       deps: Dependencies
+      #       docs: Documentation Changes
+      #       style: Code Style Changes
+      #       build: Build System
+      #       ci: Continuous Integration
+      #       test: Tests
+      #       chore: Chores
+      #       other: Other Changes
+      #     mention-authors: true
+      #     mention-new-contributors: true
+      #     default-commit-type: Other Changes
+      #     release-name: Latest Changes
+      #     semver: false
+
+      # - name: Commit CHANGELOG.md
+      #   uses: stefanzweifel/git-auto-commit-action@v4
+      #   with:
+      #     branch: main
+      #     commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
+      #     file_pattern: CHANGELOG.md
