@@ -33,7 +33,8 @@ jobs:
                       "title": "## 📦 Dependencies",
                       "labels": ["dependencies"]
                   }
-                ]
+                ],
+                "base_branches": ["release"]
               }
           fromTag: latest
           toTag: HEAD
