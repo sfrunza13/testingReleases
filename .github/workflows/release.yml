@@ -52,7 +52,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          name: Change Log
+          name: Change Log post ${{steps.build_changelog.outputs.fromTag}} up to ${{steps.build_changelog.outputs.toTag}}
           tag_name: latest
           token: ${{ github.token }}
           body: ${{steps.build_changelog.outputs.changelog}}
