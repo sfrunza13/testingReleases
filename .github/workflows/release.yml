@@ -20,7 +20,7 @@ jobs:
           node-version: lts/*
           cache: npm
       - run: npx semantic-release
-        inputs:
+        with:
           branches: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
