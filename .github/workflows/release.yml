@@ -16,6 +16,12 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Get major of current tag and previous tag
+          id: vars
+          run: |
+            git fetch -a
+            echo current_major=$(git tag --sort "-committerdate" | cut -d$'\n' -f1 | cut -d. -f1) >> "$GITHUB_ENV"
+            echo previous_major=$(git tag --sort "-committerdate" | cut -d$'\n' -f2 | cut -d. -f1) >> "$GITHUB_ENV"
       - name: "Build Changelog"
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3
@@ -46,9 +52,9 @@ jobs:
                   }
                 ]
               }
-          fromTag: git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`
+          fromTag: env.previous_major
           commitMode: false
-          toTag: git describe --tags --abbrev=0
+          toTag: env.current_major
           token: ${{ github.token }}
       - name: Create Release
         uses: softprops/action-gh-release@v1
