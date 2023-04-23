@@ -10,9 +10,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  Release:
+    name: 'Release'
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
       - name: Changelog
         uses: ardalanamini/auto-changelog@v3
