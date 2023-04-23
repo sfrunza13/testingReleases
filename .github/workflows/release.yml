@@ -23,11 +23,11 @@ jobs:
           fromTag: latest
           toTag: HEAD
           commitMode: true
-          token: ${{ GITHUB_TOKEN }}
+          token: ${{ github.token }}
       - name: Create Release
         uses: mikepenz/action-gh-release@v0.2.0-a03 #softprops/action-gh-release
         with:
           tag_name: somethingElse
-          token: ${{ GITHUB_TOKEN }}
+          token: ${{ github.token }}
           body: ${{steps.build_changelog.outputs.changelog}}
           append_body: false
