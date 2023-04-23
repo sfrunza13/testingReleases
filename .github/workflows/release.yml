@@ -15,33 +15,28 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: read
     steps:
       - name: "Build Changelog"
         id: build_changelog
-        uses: ardalanamini/auto-changelog@v3
+        uses: mikepenz/release-changelog-builder-action@v3.7.1
         with:
-          github-token: ${{ github.token }}
-          commit-types: |
-            breaking: Breaking Changes
-            feat: New Features
-            fix: Bug Fixes
-            revert: Reverts
-            perf: Performance Improvements
-            refactor: Refactors
-            deps: Dependencies
-            docs: Documentation Changes
-            style: Code Style Changes
-            build: Build System
-            ci: Continuous Integration
-            test: Tests
-            chore: Chores
-            other: Other Changes
-          default-commit-type: Other Changes
-          mention-authors: true
-          mention-new-contributors: true
-          include-compare: true
-          semver: false
+          configurationJson: |
+              {
+                "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
+                "categories": [
+                  {
+                      "title": "## 💬 Other",
+                      "labels": ["other"]
+                  },
+                  {
+                      "title": "## 📦 Dependencies",
+                      "labels": ["dependencies"]
+                  }
+                ]
+              }
+          fromTag: latest
+          toTag: HEAD
+          token: ${{ github.token }}
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
