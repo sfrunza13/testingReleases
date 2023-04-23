@@ -22,7 +22,8 @@ jobs:
         uses: requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
-          tag: latest
+          fromTag: latest
+          toTag: latest
 
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
