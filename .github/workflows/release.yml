@@ -34,7 +34,7 @@ jobs:
                   }
                 ]
               }
-          commitMode: true
+          commitMode: false
           toTag: HEAD
           token: ${{ github.token }}
       - name: Create Release
