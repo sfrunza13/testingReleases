@@ -23,7 +23,7 @@ jobs:
         with:
           configurationJson: |
               {
-                "template": "#{{CHANGELOG}}\n\nUncategorized:\n#{{UNCATEGORIZED}}\n\nIgnored:\n#{{IGNORED}}\n\n#{{UNCATEGORIZED_COUNT}}\n#{{IGNORED_COUNT}}",
+                "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Changes</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
               }
           commitMode: true
           fromTag: latest
