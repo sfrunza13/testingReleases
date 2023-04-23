@@ -38,7 +38,6 @@ jobs:
             chore: Chores
             other: Other Changes
           default-commit-type: Other Changes
-          release-name: latest
           mention-authors: true
           mention-new-contributors: true
           include-compare: true
