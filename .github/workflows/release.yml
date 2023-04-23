@@ -20,7 +20,7 @@ jobs:
       - name: Get major of current tag and previous tag
         id: vars
         run: |
-          git fetch -a
+          git fetch --all --tags
           echo "current_major=$(git tag --sort "-committerdate" | cut -d$'\n' -f1 | cut -d. -f1)" >> "$GITHUB_ENV"
           echo "previous_major=$(git tag --sort "-committerdate" | cut -d$'\n' -f2 | cut -d. -f1)" >> "$GITHUB_ENV"
       - name: "Build Changelog"
