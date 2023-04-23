@@ -28,3 +28,4 @@ jobs:
         with:
           tag_name: latest
           body: ${{steps.github_release.outputs.changelog}}
+          append_body: false
