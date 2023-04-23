@@ -22,18 +22,9 @@ jobs:
         with:
           configurationJson: |
               {
-                "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
-                "categories": [
-                  {
-                      "title": "## 💬 Other",
-                      "labels": ["other"]
-                  },
-                  {
-                      "title": "## 📦 Dependencies",
-                      "labels": ["dependencies"]
-                  }
-                ]
+                "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>"
               }
+          commitMode: true
           fromTag: latest
           toTag: HEAD
           token: ${{ github.token }}
