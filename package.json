@@ -1,6 +1,6 @@
 {
   "name": "testingreleases",
-  "version": "4.1.1",
+  "version": "5.0.0",
   "description": "Testing stuff",
   "main": "index.js",
   "scripts": {
