@@ -25,6 +25,7 @@ jobs:
           name: Latest Release
           generateReleaseNotes: true
           token: ${{ github.token }}
+          tag: latest
 
     
       # - name: Changelog
