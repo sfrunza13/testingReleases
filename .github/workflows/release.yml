@@ -30,7 +30,7 @@ jobs:
                 },
               ]
               }
-          commitMode: true
+          commitMode: false
           fromTag: latest
           toTag: HEAD
           token: ${{ github.token }}
