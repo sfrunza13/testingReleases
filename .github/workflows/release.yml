@@ -17,3 +17,4 @@ jobs:
       - name: Changelog
         uses: ardalanamini/auto-changelog@v3
         id: changelog
+        semver: false
