@@ -22,6 +22,7 @@ jobs:
         with:
           from-tag: latest
           to-tag: latest
+          allow-unknown: true
 
       # - name: Update CHANGELOG
       #   id: changelog
