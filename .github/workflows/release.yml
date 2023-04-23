@@ -26,6 +26,6 @@ jobs:
       - name: Create Release
         uses: mikepenz/action-gh-release@v0.2.0-a03 #softprops/action-gh-release
         with:
-          tag_name: latest
+          tag_name: somethingElse
           body: ${{steps.build_changelog.outputs.changelog}}
           append_body: false
