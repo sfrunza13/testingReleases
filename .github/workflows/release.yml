@@ -53,9 +53,9 @@ jobs:
                   }
                 ]
               }
-          fromTag: env.previous_major
+          fromTag: ${{env.previous_major}}
           commitMode: false
-          toTag: env.current_major
+          toTag: ${{env.current_major}}
           token: ${{ github.token }}
       - name: Create Release
         uses: softprops/action-gh-release@v1
