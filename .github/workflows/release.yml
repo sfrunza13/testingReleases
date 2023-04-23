@@ -27,14 +27,13 @@ jobs:
                 "categories": [
                   {
                       "title": "## 💬 Other",
-                      "labels": [""]
+                      "labels": ["other"]
                   },
                   {
                       "title": "## 📦 Dependencies",
                       "labels": ["dependencies"]
                   }
-                ],
-                "base_branches": ["release"]
+                ]
               }
           fromTag: latest
           toTag: HEAD
