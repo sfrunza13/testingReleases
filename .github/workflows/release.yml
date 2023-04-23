@@ -13,8 +13,8 @@ jobs:
   Release:
     name: 'Release'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    # permissions:
+    #   contents: write
     steps:
       - name: "Build Changelog"
         id: build_changelog
