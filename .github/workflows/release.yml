@@ -12,67 +12,23 @@ concurrency:
 jobs:
   Release:
     name: 'Release'
+    name: release
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Changelog
-        uses: scottbrenner/generate-changelog-action@master
-        id: Changelog
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          from-tag: latest
-          to-tag: latest
-          allow-unknown: true
-
-      # - name: Update CHANGELOG
-      #   id: changelog
-      #   uses: requarks/changelog-action@v1
-      #   with:
-      #     token: ${{ github.token }}
-      #     fromTag: latest
-      #     toTag: HEAD
-
-      - name: Create Release
-        uses: ncipollo/release-action@v1.12.0
-        with:
-          allowUpdates: true
-          draft: false
-          makeLatest: true
-          name: Latest Release
-          body: ${{ steps.changelog.outputs.changes }}
-          token: ${{ github.token }}
-          tag: latest
-
-    
-      # - name: Changelog
-      #   uses: ardalanamini/auto-changelog@v3
-      #   id: changelog
-      #   with:
-      #     github-token: ${{ github.token }}
-      #     commit-types: |
-      #       breaking: Breaking Changes
-      #       feat: New Features
-      #       fix: Bug Fixes
-      #       revert: Reverts
-      #       perf: Performance Improvements
-      #       refactor: Refactors
-      #       deps: Dependencies
-      #       docs: Documentation Changes
-      #       style: Code Style Changes
-      #       build: Build System
-      #       ci: Continuous Integration
-      #       test: Tests
-      #       chore: Chores
-      #       other: Other Changes
-      #     mention-authors: true
-      #     mention-new-contributors: true
-      #     default-commit-type: Other Changes
-      #     release-name: Latest Changes
-      #     semver: false
-
-      # - name: Commit CHANGELOG.md
-      #   uses: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     branch: main
-      #     commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
-      #     file_pattern: CHANGELOG.md
+          node-version: lts/*
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: rm .gitignore
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: >-
+          git push
+          https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          HEAD:refs/heads/v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
