@@ -63,6 +63,6 @@ jobs:
           append_body: false
       - name: Set next latest
         run: |
-          git tag latest
+          git tag -f latest
           echo "Tagged with latest"
           git push --tags
