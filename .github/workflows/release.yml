@@ -64,7 +64,7 @@ jobs:
       - name: Advance latest tag
         uses: actions/github-script@v3
         with:
-          github-token: ${{github.content}}          
+          github-token: ${{github.token}}          
           script: |
             try {
                 await github.git.deleteRef({
