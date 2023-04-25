@@ -47,11 +47,12 @@ jobs:
                 ]
               }
           commitMode: false
+          fromTag: latest
           token: ${{ github.token }}
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          name: Release ${{steps.build_changelog.outputs.toTag}}
+          name: Latest Changes
           tag_name: latest
           token: ${{ github.token }}
           body: ${{steps.build_changelog.outputs.changelog}}
