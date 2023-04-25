@@ -61,9 +61,11 @@ jobs:
           token: ${{ github.token }}
           body: ${{steps.build_changelog.outputs.changelog}}
           append_body: false
-      - name: Set next latest
+      - name: Delete latest
         run: |
           git push origin :refs/tags/latest
+      - name: Set next latest
+        run: |
           git tag latest
           echo "Delete old latest and add new latest tags"
           git push --tags
