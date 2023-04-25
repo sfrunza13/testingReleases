@@ -63,8 +63,7 @@ jobs:
           append_body: false
       - name: Set next latest
         run: |
-          git tag -d latest
-          git push --tags
+          git push --delete origin latest
           git tag latest
-          echo "Tagged with latest"
+          echo "Delete old latest and add new latest tags"
           git push --tags
