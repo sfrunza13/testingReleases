@@ -16,15 +16,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Get major of current tag and previous tag
-        id: vars
-        run: |
-          git fetch -a
-          echo "current_version=$(git tag -l --sort -refname v* | cut -d$'\n' -f1 )" >> "$GITHUB_ENV"
-          echo "previous_version=$(git tag -l --sort -refname v* | cut -d$'\n' -f2)" >> "$GITHUB_ENV"
       - name: "Build Changelog"
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3
@@ -57,12 +48,10 @@ jobs:
               }
           fromTag: ${{env.previous_version}}
           commitMode: false
-          toTag: ${{env.current_version}}
-          token: ${{ github.token }}
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          name: Release ${{steps.build_changelog.outputs.toTag}}
+          name: Latest Changes
           tag_name: latest
           token: ${{ github.token }}
           body: ${{steps.build_changelog.outputs.changelog}}
