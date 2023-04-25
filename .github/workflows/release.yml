@@ -81,11 +81,3 @@ jobs:
               ref: "refs/tags/latest",
               sha: context.sha
             })
-      # - name: Delete latest
-      #   run: |
-      #     git push origin :refs/tags/latest
-      # - name: Set next latest
-      #   run: |
-      #     git tag latest
-      #     echo "Delete old latest and add new latest tags"
-      #     git push --tags
