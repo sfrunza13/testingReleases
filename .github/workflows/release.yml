@@ -64,6 +64,7 @@ jobs:
       - name: Set next latest
         run: |
           git tag -d latest
+          git push --tags
           git tag latest
           echo "Tagged with latest"
           git push --tags
