@@ -62,9 +62,11 @@ jobs:
           body: ${{steps.build_changelog.outputs.changelog}}
           append_body: false
       - name: Delete latest
+        needs: [Build Changelog, Create Release]
         run: |
           git push origin :refs/tags/latest
       - name: Set next latest
+        needs: [Delete latest]
         run: |
           git tag latest
           echo "Delete old latest and add new latest tags"
