@@ -48,6 +48,7 @@ jobs:
               }
           commitMode: false
           fromTag: latest
+          toTag: HEAD
           token: ${{ github.token }}
       - name: Create Release
         uses: softprops/action-gh-release@v1
