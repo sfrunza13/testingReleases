@@ -61,6 +61,7 @@ jobs:
           token: ${{ github.token }}
           body: ${{steps.build_changelog.outputs.changelog}}
           append_body: false
+          draft: false
       - name: Advance latest tag
         uses: actions/github-script@v3
         with:
